@@ -16,11 +16,15 @@
 
                     {{ __('Bienvenido Administrador') }}
                 </div>
+
                 <div class="col-sm-3">
-                    <a href="{{route('admin.user.index') }}">Usuarios</a>
+                    <a href="{{ route('admin.user.index') }}">Usuarios</a>
                 </div>
-                 <div class="col-sm-3">
-                    <a href="{{route('admin.cars.index') }}">Autos</a>
+                <div class="col-sm-3">
+                    <a href="{{ route('admin.cars.index') }}">Autos</a>
+                </div>
+                <div class="col-sm-3">
+                    <a href="{{ route('admin.sales.index') }}">Ventas</a>
                 </div>
             </div>
         </div>

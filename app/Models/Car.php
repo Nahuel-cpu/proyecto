@@ -18,6 +18,10 @@ class Car extends Model
         'stock',
         'image',
     ];
+    public function sales()
+    {
+        return $this->hasMany(Sale::class);
+    }
 
     // Relación: un auto puede tener muchas ventas
 }

@@ -5,6 +5,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CarController;
+use App\Http\Controllers\Admin\SaleController;
+use App\Http\Controllers\Client\SaleController as ClientSaleController;
+use App\Http\Controllers\Client\ClientController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,10 +27,17 @@ Route::prefix('admin')->name('admin.')->middleware(['auth','role:admin'])->group
 
     Route::resource('user',UserController::class);
 
-    Route::resource('cars', CarController::class);
+    Route::resource('cars', controller: CarController::class);
+
+Route::resource('sales', controller: SaleController::class);
+
+
 });
 
 Route::prefix('cliente')->middleware(['auth','role:cliente'])->group(function(){
-
     Route::get('/dashboard', [HomeController::class,'clienteDashboard'])->name('cliente.dashboard');
+    Route::get('/cars', [ClientController::class, 'cars'])->name('cliente.cars');
+
+    Route::post('/client/purchase/{car}', [ClientSaleController::class, 'purchase'])->name('cliente.purchase');
+    Route::post('/client/cancel-purchase', [ClientSaleController::class, 'cancel'])->name('cliente.cancel');
 });
