@@ -20,8 +20,10 @@ services:
     container_name: laravel_db
     restart: always
     environment:
-      MYSQL_DATABASE: carctd
-      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: tienda
+      MYSQL_ROOT_PASSWORD: 
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
     ports:
       - "3306:3306"
     volumes:
